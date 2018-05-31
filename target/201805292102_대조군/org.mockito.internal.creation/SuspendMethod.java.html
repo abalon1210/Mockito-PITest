@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>SuspendMethod.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_1'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/*</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_2'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Copyright (c) 2017 Mockito contributors</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_3'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * This program is made available under the terms of the MIT License.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_4'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_5'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package org.mockito.internal.creation;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_6'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_7'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.Arrays;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_8'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_9'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_10'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Utilities for Kotlin Continuation-Passing-Style suspending function, detecting and trimming last hidden parameter.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_11'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * See &#60;a href=&#34;https://github.com/Kotlin/kotlin-coroutines/blob/master/kotlin-coroutines-informal.md#continuation-passing-style&#34;&#62;Design docs for details&#60;/a&#62;.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_12'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_13'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>public class SuspendMethod {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_14'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private static final String KOTLIN_CONTINUATION = &#34;kotlin.coroutines.experimental.Continuation&#34;;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_15'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_16'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static Class&#60;?&#62;[] trimSuspendParameterTypes(Class&#60;?&#62;[] parameterTypes) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_17'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        int n = parameterTypes.length;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_18'/>
+18
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_18'>4</a>
+<span>
+
+1. trimSuspendParameterTypes : changed conditional boundary &rarr; KILLED<br/>
+
+2. trimSuspendParameterTypes : Replaced integer subtraction with addition &rarr; KILLED<br/>
+
+3. trimSuspendParameterTypes : negated conditional &rarr; KILLED<br/>
+
+4. trimSuspendParameterTypes : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (n &#62; 0 &#38;&#38; parameterTypes[n - 1].getName().equals(KOTLIN_CONTINUATION))</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_19'/>
+19
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_19'>2</a>
+<span>
+
+1. trimSuspendParameterTypes : Replaced integer subtraction with addition &rarr; NO_COVERAGE<br/>
+
+2. trimSuspendParameterTypes : mutated return of Object value for org/mockito/internal/creation/SuspendMethod::trimSuspendParameterTypes to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE<br/>
+
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>            return Arrays.copyOf(parameterTypes, n - 1);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_20'/>
+20
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_20'>1</a>
+<span>
+
+1. trimSuspendParameterTypes : mutated return of Object value for org/mockito/internal/creation/SuspendMethod::trimSuspendParameterTypes to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return parameterTypes;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_21'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_22'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_18'>18</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_18'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>trimSuspendParameterTypes<br/><b>Killed by : </b>org.mockito.internal.debugging.VerboseMockInvocationLoggerTest.should_print_to_system_out(org.mockito.internal.debugging.VerboseMockInvocationLoggerTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>trimSuspendParameterTypes<br/><b>Killed by : </b>org.mockito.internal.util.ObjectMethodsGuruTest.shouldKnowToStringMethod(org.mockito.internal.util.ObjectMethodsGuruTest)</span></span> Replaced integer subtraction with addition &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>trimSuspendParameterTypes<br/><b>Killed by : </b>org.mockito.internal.debugging.VerboseMockInvocationLoggerTest.should_print_to_system_out(org.mockito.internal.debugging.VerboseMockInvocationLoggerTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>4.<span><b>4</b><br/><b>Location : </b>trimSuspendParameterTypes<br/><b>Killed by : </b>org.mockito.internal.util.ObjectMethodsGuruTest.shouldKnowToStringMethod(org.mockito.internal.util.ObjectMethodsGuruTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_19'>19</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_19'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>trimSuspendParameterTypes<br/><b>Killed by : </b>none</span></span> Replaced integer subtraction with addition &rarr; NO_COVERAGE</p> <p class='NO_COVERAGE'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>trimSuspendParameterTypes<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/mockito/internal/creation/SuspendMethod::trimSuspendParameterTypes to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_20'>20</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2b9c0a0e_20'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>trimSuspendParameterTypes<br/><b>Killed by : </b>org.mockito.internal.debugging.VerboseMockInvocationLoggerTest.should_print_to_system_out(org.mockito.internal.debugging.VerboseMockInvocationLoggerTest)</span></span> mutated return of Object value for org/mockito/internal/creation/SuspendMethod::trimSuspendParameterTypes to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+
+<li class='mutator'>MATH_MUTATOR</li>
+
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>org.mockito.internal.debugging.LoggingListenerTest.informs_about_unused_stubs_due_arg_mismatch(org.mockito.internal.debugging.LoggingListenerTest) (0 ms)</li><li>org.mockito.internal.invocation.SerializableMethodTest.shouldBeAbleToCheckIsArgVargs(org.mockito.internal.invocation.SerializableMethodTest) (1 ms)</li><li>org.mockito.internal.invocation.InvocationsFinderTest.shouldFindPreviousInOrder(org.mockito.internal.invocation.InvocationsFinderTest) (1 ms)</li><li>org.mockito.internal.invocation.MatcherApplicationStrategyTest.shouldAllowAnyVarargMatchEntireVararg(org.mockito.internal.invocation.MatcherApplicationStrategyTest) (1 ms)</li><li>org.mockito.internal.invocation.InvocationsFinderTest.shouldFindMatchingChunk(org.mockito.internal.invocation.InvocationsFinderTest) (1 ms)</li><li>org.mockito.internal.debugging.VerboseMockInvocationLoggerTest.should_print_to_system_out(org.mockito.internal.debugging.VerboseMockInvocationLoggerTest) (0 ms)</li><li>org.mockito.internal.matchers.MatchersPrinterTest.shouldDescribeTypeInfoOnlyMarkedMatchers(org.mockito.internal.matchers.MatchersPrinterTest) (1 ms)</li><li>org.mockito.internal.debugging.WarningsFinderTest.shouldPrintStubWasUsedWithDifferentArgs(org.mockito.internal.debugging.WarningsFinderTest) (7 ms)</li><li>org.mockito.internal.handler.MockHandlerImplTest.should_throw_mockito_exception_when_invocation_handler_throws_anything(org.mockito.internal.handler.MockHandlerImplTest) (0 ms)</li><li>org.mockito.internal.invocation.InvocationMatcherTest.should_create_from_invocations(org.mockito.internal.invocation.InvocationMatcherTest) (1 ms)</li><li>org.mockito.internal.verification.OnlyTest.shouldNotMarkAsVerifiedWhenAssertionFailed(org.mockito.internal.verification.OnlyTest) (0 ms)</li><li>org.mockito.internal.junit.ArgMismatchFinderTest.mismatch_reports_only_unstubbed_invocations(org.mockito.internal.junit.ArgMismatchFinderTest) (1 ms)</li><li>org.mockito.internal.invocation.InvocationsFinderTest.shouldFindAllStackTraces(org.mockito.internal.invocation.InvocationsFinderTest) (2 ms)</li><li>org.mockito.internal.verification.VerificationOverTimeImplTest.should_throw_mockito_assertion_error(org.mockito.internal.verification.VerificationOverTimeImplTest) (1009 ms)</li><li>org.mockito.internal.handler.MockHandlerImplTest.should_remove_verification_mode_even_when_invalid_matchers(org.mockito.internal.handler.MockHandlerImplTest) (55 ms)</li><li>org.mockito.internal.configuration.plugins.PluginFinderTest.multiple_empty_implementations(org.mockito.internal.configuration.plugins.PluginFinderTest) (20 ms)</li><li>org.mockito.internal.verification.SmartPrinterTest.shouldPrintBothInSingleLineWhenBothAreShort(org.mockito.internal.verification.SmartPrinterTest) (0 ms)</li><li>org.mockito.internal.handler.InvocationNotifierHandlerTest.should_notify_all_listeners_when_called_delegate_handler_throws_exception_and_rethrow_it(org.mockito.internal.handler.InvocationNotifierHandlerTest) (1 ms)</li><li>org.mockito.internal.debugging.LoggingListenerTest.informs_about_unstubbed(org.mockito.internal.debugging.LoggingListenerTest) (0 ms)</li><li>org.mockito.internal.AllInvocationsFinderTest.provides_stubbings_in_order(org.mockito.internal.AllInvocationsFinderTest) (2 ms)</li><li>org.mockito.internal.util.DefaultMockingDetailsTest.provides_invocations(org.mockito.internal.util.DefaultMockingDetailsTest) (2 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest.shouldReportNeverWantedButInvoked(org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest) (1 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest.shouldReportWithAllInvocationsStackTrace(org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest) (1 ms)</li><li>org.mockito.internal.InvalidStateDetectionTest.shouldDetectUnfinishedDoAnswerStubbing(org.mockito.internal.InvalidStateDetectionTest) (2 ms)</li><li>org.mockito.internal.verification.VerificationOverTimeImplTest.should_not_wrap_other_exceptions(org.mockito.internal.verification.VerificationOverTimeImplTest) (2 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest.shouldReportTooManyActual(org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest) (0 ms)</li><li>org.mockito.internal.invocation.InvocationMatcherTest.should_capture_arguments_from_invocation(org.mockito.internal.invocation.InvocationMatcherTest) (0 ms)</li><li>org.mockito.internal.debugging.LoggingListenerTest.hides_unstubbed(org.mockito.internal.debugging.LoggingListenerTest) (0 ms)</li><li>org.mockito.internal.matchers.text.MatcherToStringTest.better_toString_for_matchers(org.mockito.internal.matchers.text.MatcherToStringTest) (1 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest.shouldNotReportWithLastInvocationStackTraceIfNoInvocationsFound(org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest) (0 ms)</li><li>org.mockito.internal.junit.ArgMismatchFinderTest.single_mismatch_with_multiple_invocations(org.mockito.internal.junit.ArgMismatchFinderTest) (2 ms)</li><li>org.mockito.internal.util.DefaultMockingDetailsTest.provides_stubbings_of_mock_in_declaration_order(org.mockito.internal.util.DefaultMockingDetailsTest) (1 ms)</li><li>org.mockito.internal.invocation.InvocationsFinderTest.shouldGetLastStackTrace(org.mockito.internal.invocation.InvocationsFinderTest) (1 ms)</li><li>org.mockito.internal.invocation.InvocationsFinderTest.shouldFindFirstUnverifiedInOrderAndRespectSequenceNumber(org.mockito.internal.invocation.InvocationsFinderTest) (1 ms)</li><li>org.mockito.internal.junit.StubbingArgMismatchesTest.multiple_matching_invocations_per_stub_plus_some_other_invocation(org.mockito.internal.junit.StubbingArgMismatchesTest) (1 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest.shouldMarkInvocationsAsVerified(org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest) (2 ms)</li><li>org.mockito.StaticMockingExperimentTest.stubbing_new(org.mockito.StaticMockingExperimentTest) (2 ms)</li><li>org.mockito.internal.verification.checkers.MissingInvocationInOrderCheckerTest.shouldPassWhenMatchingInteractionFound(org.mockito.internal.verification.checkers.MissingInvocationInOrderCheckerTest) (1 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest.shouldMarkAsVerifiedInOrder(org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest) (0 ms)</li><li>org.mockito.internal.configuration.ClassPathLoaderTest.shouldReadConfigurationClassFromClassPath(org.mockito.internal.configuration.ClassPathLoaderTest) (1 ms)</li><li>org.mockito.internal.junit.ArgMismatchFinderTest.no_mismatch_when_mock_different(org.mockito.internal.junit.ArgMismatchFinderTest) (2 ms)</li><li>org.mockito.internal.exceptions.ReporterTest.can_use_print_mock_name_even_when_mock_bogus_default_answer_and_when_reporting_no_more_interaction_wanted_in_order(org.mockito.internal.exceptions.ReporterTest) (0 ms)</li><li>org.mockito.internal.InvalidStateDetectionTest.shouldCorrectStateAfterDetectingUnfinishedVerification(org.mockito.internal.InvalidStateDetectionTest) (1 ms)</li><li>org.mockito.internal.invocation.InvocationsFinderTest.shouldFindActualInvocations(org.mockito.internal.invocation.InvocationsFinderTest) (1 ms)</li><li>org.mockito.internal.exceptions.util.ScenarioPrinterTest.shouldNotPrintInvocationsWhenSingleUnwanted(org.mockito.internal.exceptions.util.ScenarioPrinterTest) (1 ms)</li><li>org.mockito.internal.invocation.InvocationsFinderTest.shouldFindAllMatchingUnverifiedChunks(org.mockito.internal.invocation.InvocationsFinderTest) (0 ms)</li><li>org.mockito.internal.invocation.InvocationsFinderTest.shouldReturnAllChunksWhenWantedCountDoesntMatch(org.mockito.internal.invocation.InvocationsFinderTest) (1 ms)</li><li>org.mockito.internal.invocation.InvocationsFinderTest.shouldReturnAllChunksWhenModeIsAtLeastOnce(org.mockito.internal.invocation.InvocationsFinderTest) (1 ms)</li><li>org.mockito.internal.verification.checkers.MissingInvocationCheckerTest.shouldReportWantedButNotInvoked(org.mockito.internal.verification.checkers.MissingInvocationCheckerTest) (0 ms)</li><li>org.mockito.internal.creation.DelegatingMethodTest.equals_should_return_false_when_not_equal_to_method(org.mockito.internal.creation.DelegatingMethodTest) (1 ms)</li><li>org.mockito.internal.AllInvocationsFinderTest.provides_invocations_in_order(org.mockito.internal.AllInvocationsFinderTest) (2 ms)</li><li>org.mockito.internal.verification.DefaultRegisteredInvocationsTest.should_not_return_to_string_method(org.mockito.internal.verification.DefaultRegisteredInvocationsTest) (1 ms)</li><li>org.mockito.InvocationFactoryTest.call_method_that_returns_a_string(org.mockito.InvocationFactoryTest) (25 ms)</li><li>org.mockito.verification.TimeoutTest.should_fail_because_verification_fails(org.mockito.verification.TimeoutTest) (22 ms)</li><li>org.mockito.internal.invocation.SerializableMethodTest.shouldBeAbleToGetReturnType(org.mockito.internal.invocation.SerializableMethodTest) (1 ms)</li><li>org.mockito.internal.InvalidStateDetectionTest.shouldDetectUnfinishedStubbing(org.mockito.internal.InvalidStateDetectionTest) (2 ms)</li><li>org.mockito.internal.matchers.MatchersPrinterTest.shouldDescribeStringMatcher(org.mockito.internal.matchers.MatchersPrinterTest) (0 ms)</li><li>org.mockito.internal.configuration.plugins.PluginLoaderTest.loads_alternative_plugin(org.mockito.internal.configuration.plugins.PluginLoaderTest) (1 ms)</li><li>org.mockito.internal.util.DefaultMockingDetailsTest.prints_invocations(org.mockito.internal.util.DefaultMockingDetailsTest) (2 ms)</li><li>org.mockito.internal.verification.checkers.MissingInvocationCheckerTest.shouldPassBecauseActualInvocationFound(org.mockito.internal.verification.checkers.MissingInvocationCheckerTest) (0 ms)</li><li>org.mockito.internal.junit.JUnitRuleTest.detects_invalid_mockito_usage_on_success(org.mockito.internal.junit.JUnitRuleTest) (3 ms)</li><li>org.mockito.internal.verification.checkers.MissingInvocationInOrderCheckerTest.shouldReportWantedButNotInvoked(org.mockito.internal.verification.checkers.MissingInvocationInOrderCheckerTest) (1 ms)</li><li>org.mockito.internal.configuration.plugins.PluginLoaderTest.fails_to_load_plugin(org.mockito.internal.configuration.plugins.PluginLoaderTest) (23 ms)</li><li>org.mockito.internal.InOrderImplTest.shouldMarkVerifiedInOrder(org.mockito.internal.InOrderImplTest) (2 ms)</li><li>org.mockito.internal.exceptions.util.ScenarioPrinterTest.shouldPrintInvocations(org.mockito.internal.exceptions.util.ScenarioPrinterTest) (2 ms)</li><li>org.mockito.internal.invocation.MatcherApplicationStrategyTest.shouldKnowWhenActualArgsSizeIsDifferent1(org.mockito.internal.invocation.MatcherApplicationStrategyTest) (1 ms)</li><li>org.mockito.internal.handler.MockHandlerFactoryTest.valid_handle_result_is_permitted(org.mockito.internal.handler.MockHandlerFactoryTest) (1 ms)</li><li>org.mockito.internal.invocation.MatcherApplicationStrategyTest.shouldKnowWhenVarargsMatch(org.mockito.internal.invocation.MatcherApplicationStrategyTest) (1 ms)</li><li>org.mockito.internal.junit.UnusedStubbingsTest.unused_stubbings(org.mockito.internal.junit.UnusedStubbingsTest) (3 ms)</li><li>org.mockito.internal.invocation.SerializableMethodTest.shouldBeAbleToRetrieveMethodName(org.mockito.internal.invocation.SerializableMethodTest) (1 ms)</li><li>org.mockito.internal.invocation.InvocationMatcherTest.should_know_if_is_similar_to(org.mockito.internal.invocation.InvocationMatcherTest) (1 ms)</li><li>org.mockito.internal.verification.checkers.AtLeastXNumberOfInvocationsCheckerTest.shouldMarkActualInvocationsAsVerifiedInOrder(org.mockito.internal.verification.checkers.AtLeastXNumberOfInvocationsCheckerTest) (0 ms)</li><li>org.mockito.internal.configuration.plugins.PluginFinderTest.single_implementation(org.mockito.internal.configuration.plugins.PluginFinderTest) (11 ms)</li><li>org.mockito.internal.verification.NoMoreInteractionsTest.shouldVerifyInOrderAndPass(org.mockito.internal.verification.NoMoreInteractionsTest) (0 ms)</li><li>org.mockito.internal.exceptions.ReporterTest.can_use_print_mock_name_even_when_mock_bogus_default_answer_and_when_reporting_invalid_argument_position(org.mockito.internal.exceptions.ReporterTest) (0 ms)</li><li>org.mockito.internal.invocation.MatcherApplicationStrategyTest.shouldNotAllowAnyObjectWithMixedVarargs(org.mockito.internal.invocation.MatcherApplicationStrategyTest) (2 ms)</li><li>org.mockito.internal.invocation.InvocationMatcherTest.should_match_varargs_using_any_varargs(org.mockito.internal.invocation.InvocationMatcherTest) (1 ms)</li><li>org.mockito.internal.creation.InterfaceOverrideTest.inherit_public_method_from_interface(org.mockito.internal.creation.InterfaceOverrideTest) (9 ms)</li><li>org.mockito.internal.exceptions.ReporterTest.can_use_print_mock_name_even_when_mock_bogus_default_answer_and_when_reporting_delegate_method_has_wrong_return_type(org.mockito.internal.exceptions.ReporterTest) (1 ms)</li><li>org.mockito.internal.invocation.SerializableMethodTest.shouldBeAbleToGetParameterTypes(org.mockito.internal.invocation.SerializableMethodTest) (4 ms)</li><li>org.mockito.internal.util.DefaultMockingDetailsTest.manipulating_stubbings_explicitly_is_safe(org.mockito.internal.util.DefaultMockingDetailsTest) (1 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest.shouldNotReportWithLastInvocationStackTraceIfNoInvocationsFound(org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest) (1 ms)</li><li>org.mockito.InvocationFactoryTest.deprecated_api_still_works(org.mockito.InvocationFactoryTest) (1 ms)</li><li>org.mockito.verification.TimeoutTest.should_pass_even_if_first_verification_fails(org.mockito.verification.TimeoutTest) (3 ms)</li><li>org.mockito.internal.configuration.plugins.PluginFinderTest.multiple_implementations_only_one_enabled(org.mockito.internal.configuration.plugins.PluginFinderTest) (15 ms)</li><li>org.mockito.internal.junit.ArgMismatchFinderTest.single_invocation_with_multiple_stubs(org.mockito.internal.junit.ArgMismatchFinderTest) (2 ms)</li><li>org.mockito.internal.util.reflection.LenientCopyToolTest.shouldContinueEvenIfThereAreProblemsCopyingSingleFieldValue(org.mockito.internal.util.reflection.LenientCopyToolTest) (9 ms)</li><li>org.mockito.internal.creation.DelegatingMethodTest.equals_should_return_true_when_equal(org.mockito.internal.creation.DelegatingMethodTest) (0 ms)</li><li>org.mockito.verification.TimeoutTest.should_try_to_verify_correct_number_of_times(org.mockito.verification.TimeoutTest) (53 ms)</li><li>org.mockito.internal.verification.NoMoreInteractionsTest.shouldVerifyInOrderMultipleInvoctions(org.mockito.internal.verification.NoMoreInteractionsTest) (0 ms)</li><li>org.mockito.internal.verification.SmartPrinterTest.shouldPrintBothInMultilinesWhenBothAreMulti(org.mockito.internal.verification.SmartPrinterTest) (1 ms)</li><li>org.mockito.StaticMockingExperimentTest.stubbing_static_method(org.mockito.StaticMockingExperimentTest) (2 ms)</li><li>org.mockito.internal.handler.InvocationNotifierHandlerTest.should_delegate_all_MockHandlerInterface_to_the_parameterized_MockHandler(org.mockito.internal.handler.InvocationNotifierHandlerTest) (37 ms)</li><li>org.mockito.internal.invocation.InvocationMatcherTest.should_to_string_with_matchers(org.mockito.internal.invocation.InvocationMatcherTest) (1 ms)</li><li>org.mockito.internal.matchers.MatchersPrinterTest.shouldGetArgumentsBlock(org.mockito.internal.matchers.MatchersPrinterTest) (1 ms)</li><li>org.mockito.internal.invocation.InvocationsFinderTest.shouldFindFirstUnverifiedInvocation(org.mockito.internal.invocation.InvocationsFinderTest) (1 ms)</li><li>org.mockito.internal.listeners.VerificationStartedNotifierTest.decent_exception_when_setting_mock_of_wrong_type(org.mockito.internal.listeners.VerificationStartedNotifierTest) (1 ms)</li><li>org.mockito.internal.invocation.MatcherApplicationStrategyTest.shouldAllowAnyObjectWithMixedVarargs(org.mockito.internal.invocation.MatcherApplicationStrategyTest) (1 ms)</li><li>org.mockito.internal.invocation.InvocationsFinderTest.shouldFindFirstUnverifiedInOrder(org.mockito.internal.invocation.InvocationsFinderTest) (1 ms)</li><li>org.mockito.internal.junit.StubbingArgMismatchesTest.logs_mismatch(org.mockito.internal.junit.StubbingArgMismatchesTest) (8 ms)</li><li>org.mockito.internal.exceptions.ReporterTest.should_let_passing_null_last_actual_stack_trace(org.mockito.internal.exceptions.ReporterTest) (1 ms)</li><li>org.mockito.internal.verification.SmartPrinterTest.shouldPrintBothInMultilinesWhenSecondIsMulti(org.mockito.internal.verification.SmartPrinterTest) (1 ms)</li><li>org.mockito.internal.util.reflection.FieldInitializerTest.can_instantiate_class_with_parameterized_constructor(org.mockito.internal.util.reflection.FieldInitializerTest) (5 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest.shouldReportNeverWantedButInvoked(org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest) (0 ms)</li><li>org.mockito.internal.framework.DefaultMockitoFrameworkTest.removes_creation_listener(org.mockito.internal.framework.DefaultMockitoFrameworkTest) (1 ms)</li><li>org.mockito.internal.verification.VerificationOverTimeImplTest.should_deal_with_junit_assertion_error(org.mockito.internal.verification.VerificationOverTimeImplTest) (1002 ms)</li><li>org.mockito.internal.exceptions.ReporterTest.can_use_print_mock_name_even_when_mock_bogus_default_answer_and_when_reporting_wrong_argument_to_return(org.mockito.internal.exceptions.ReporterTest) (0 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest.shouldPassIfWantedIsZeroAndMatchingChunkIsEmpty(org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest) (0 ms)</li><li>org.mockito.internal.creation.DelegatingMethodTest.equals_should_return_true_when_self(org.mockito.internal.creation.DelegatingMethodTest) (0 ms)</li><li>org.mockito.internal.verification.NoMoreInteractionsTest.shouldVerifyInOrder(org.mockito.internal.verification.NoMoreInteractionsTest) (1 ms)</li><li>org.mockito.internal.verification.OnlyTest.shouldMarkAsVerified(org.mockito.internal.verification.OnlyTest) (0 ms)</li><li>org.mockito.internal.invocation.InvocationsFinderTest.shouldFindFirstUnverifiedInvocationOnMock(org.mockito.internal.invocation.InvocationsFinderTest) (0 ms)</li><li>org.mockito.internal.invocation.InvocationMatcherTest.should_not_equal_if_number_of_arguments_differ(org.mockito.internal.invocation.InvocationMatcherTest) (1 ms)</li><li>org.mockito.internal.junit.ArgMismatchFinderTest.no_mismatch_when_stubbing_used(org.mockito.internal.junit.ArgMismatchFinderTest) (1 ms)</li><li>org.mockito.internal.debugging.VerboseMockInvocationLoggerTest.should_print_invocation_with_return_value(org.mockito.internal.debugging.VerboseMockInvocationLoggerTest) (1 ms)</li><li>org.mockito.internal.exceptions.ReporterTest.can_use_print_mock_name_even_when_mock_bogus_default_answer_and_when_reporting_delegate_method_dont_exists(org.mockito.internal.exceptions.ReporterTest) (0 ms)</li><li>org.mockito.internal.verification.VerificationWithDescriptionTest.assertion_error_message_should_start_with_the_custom_specified_message(org.mockito.internal.verification.VerificationWithDescriptionTest) (1 ms)</li><li>org.mockito.internal.util.reflection.ParameterizedConstructorInstantiatorTest.should_fail_if_an_argument_instance_type_do_not_match_wanted_type(org.mockito.internal.util.reflection.ParameterizedConstructorInstantiatorTest) (2 ms)</li><li>org.mockito.internal.listeners.VerificationStartedNotifierTest.decent_exception_when_setting_mock_that_does_not_implement_all_desired_interfaces(org.mockito.internal.listeners.VerificationStartedNotifierTest) (28 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest.shouldReportAllInvocationsStackTrace(org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest) (1 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest.shouldReportTooLittleInvocations(org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest) (1 ms)</li><li>org.mockito.internal.configuration.plugins.PluginFinderTest.problems_loading_impl(org.mockito.internal.configuration.plugins.PluginFinderTest) (9 ms)</li><li>org.mockito.internal.invocation.InvocationMatcherTest.should_capture_varargs_as_vararg(org.mockito.internal.invocation.InvocationMatcherTest) (1 ms)</li><li>org.mockito.internal.verification.VerificationOverTimeImplTest.should_return_on_success(org.mockito.internal.verification.VerificationOverTimeImplTest) (1 ms)</li><li>org.mockito.internal.verification.VerificationDataImplTest.shouldToStringBeNotVerifiable(org.mockito.internal.verification.VerificationDataImplTest) (0 ms)</li><li>org.mockito.internal.verification.SmartPrinterTest.shouldPrintBothInMultilinesWhenFirstIsMulti(org.mockito.internal.verification.SmartPrinterTest) (1 ms)</li><li>org.mockito.internal.verification.checkers.MissingInvocationInOrderCheckerTest.shouldReportArgumentsAreDifferent(org.mockito.internal.verification.checkers.MissingInvocationInOrderCheckerTest) (1 ms)</li><li>org.mockito.internal.util.ObjectMethodsGuruTest.shouldKnowToStringMethod(org.mockito.internal.util.ObjectMethodsGuruTest) (0 ms)</li><li>org.mockito.internal.invocation.InvocationMatcherTest.should_not_be_similar_if_mocks_are_different(org.mockito.internal.invocation.InvocationMatcherTest) (1 ms)</li><li>org.mockito.internal.invocation.InvocationsFinderTest.shouldNotFindLocationsForEmptyInvocationsList(org.mockito.internal.invocation.InvocationsFinderTest) (1 ms)</li><li>org.mockito.internal.invocation.SerializableMethodTest.shouldBeSerializable(org.mockito.internal.invocation.SerializableMethodTest) (6 ms)</li><li>org.mockito.internal.creation.DelegatingMethodTest.equals_should_return_true_when_equal_to_method(org.mockito.internal.creation.DelegatingMethodTest) (0 ms)</li><li>org.mockito.internal.exceptions.ReporterTest.can_use_mock_name_even_when_mock_bogus_default_answer_and_when_reporting_no_more_interaction_wanted(org.mockito.internal.exceptions.ReporterTest) (1 ms)</li><li>org.mockito.internal.debugging.VerboseMockInvocationLoggerTest.should_print_invocation_with_exception(org.mockito.internal.debugging.VerboseMockInvocationLoggerTest) (1 ms)</li><li>org.mockito.internal.junit.ArgMismatchFinderTest.no_mismatch_when_method_different(org.mockito.internal.junit.ArgMismatchFinderTest) (1 ms)</li><li>org.mockito.internal.invocation.InvocationMarkerTest.shouldCaptureArguments(org.mockito.internal.invocation.InvocationMarkerTest) (0 ms)</li><li>org.mockito.internal.util.reflection.GenericArrayReturnTypeTest.toArrayTypedDoesNotWork(org.mockito.internal.util.reflection.GenericArrayReturnTypeTest) (14 ms)</li><li>org.mockito.internal.invocation.InvocationMatcherTest.should_be_a_citizen_of_hashes(org.mockito.internal.invocation.InvocationMatcherTest) (0 ms)</li><li>org.mockito.internal.handler.InvocationNotifierHandlerTest.should_report_listener_exception(org.mockito.internal.handler.InvocationNotifierHandlerTest) (2 ms)</li><li>org.mockito.internal.invocation.InvocationMatcherTest.should_capture_arguments_when_args_count_does_NOT_match(org.mockito.internal.invocation.InvocationMatcherTest) (0 ms)</li><li>org.mockito.internal.verification.checkers.MissingInvocationInOrderCheckerTest.shouldReportWantedDiffersFromActual(org.mockito.internal.verification.checkers.MissingInvocationInOrderCheckerTest) (1 ms)</li><li>org.mockito.internal.invocation.MatcherApplicationStrategyTest.shouldMatchAnyVarargEvenIfOneOfTheArgsIsNull(org.mockito.internal.invocation.MatcherApplicationStrategyTest) (1 ms)</li><li>org.mockito.internal.configuration.plugins.PluginLoaderTest.loads_default_plugin(org.mockito.internal.configuration.plugins.PluginLoaderTest) (1 ms)</li><li>org.mockito.internal.session.DefaultMockitoSessionBuilderTest.uses_logger_and_strictness(org.mockito.internal.session.DefaultMockitoSessionBuilderTest) (1 ms)</li><li>org.mockito.internal.handler.InvocationNotifierHandlerTest.should_notify_all_listeners_when_called_delegate_handler_returns_ex(org.mockito.internal.handler.InvocationNotifierHandlerTest) (1 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest.shouldReportWithAllInvocationsStackTrace(org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest) (0 ms)</li><li>org.mockito.StaticMockingExperimentTest.do_answer_stubbing_static_method(org.mockito.StaticMockingExperimentTest) (11 ms)</li><li>org.mockito.internal.invocation.MatcherApplicationStrategyTest.shouldKnowWhenActualArgsSizeIsDifferent2(org.mockito.internal.invocation.MatcherApplicationStrategyTest) (1 ms)</li><li>org.mockito.internal.matchers.MatchersPrinterTest.shouldGetVerboseArgumentsEvenIfSomeMatchersAreNotVerbose(org.mockito.internal.matchers.MatchersPrinterTest) (0 ms)</li><li>org.mockito.internal.verification.NoMoreInteractionsTest.noMoreInteractionsExceptionMessageShouldDescribeMock(org.mockito.internal.verification.NoMoreInteractionsTest) (1 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest.shouldReportTooManyActual(org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest) (1 ms)</li><li>org.mockito.internal.invocation.MatcherApplicationStrategyTest.shouldAnyObjectVarargDealWithDifferentSizeOfArgs(org.mockito.internal.invocation.MatcherApplicationStrategyTest) (1 ms)</li><li>org.mockito.internal.invocation.MatcherApplicationStrategyTest.shouldMatchAnyVarargEvenIfMatcherIsDecorated(org.mockito.internal.invocation.MatcherApplicationStrategyTest) (1 ms)</li><li>org.mockito.StaticMockingExperimentTest.verify_no_more_interactions(org.mockito.StaticMockingExperimentTest) (1 ms)</li><li>org.mockito.internal.util.reflection.ParameterizedConstructorInstantiatorTest.should_instantiate_type_with_vararg_constructor(org.mockito.internal.util.reflection.ParameterizedConstructorInstantiatorTest) (1 ms)</li><li>org.mockito.internal.InvalidStateDetectionTest.shouldCorrectStateAfterDetectingUnfinishedStubbing(org.mockito.internal.InvalidStateDetectionTest) (2 ms)</li><li>org.mockito.internal.AllInvocationsFinderTest.deduplicates_interactions_from_the_same_mock(org.mockito.internal.AllInvocationsFinderTest) (89 ms)</li><li>org.mockito.internal.invocation.InvocationMatcherTest.should_not_be_similar_to_verified_invocation(org.mockito.internal.invocation.InvocationMatcherTest) (1 ms)</li><li>org.mockito.StaticMockingExperimentTest.verification_failure_static_method(org.mockito.StaticMockingExperimentTest) (5 ms)</li><li>org.mockito.internal.invocation.InvocationsFinderTest.shouldFindInvocationWithTheSameMethod(org.mockito.internal.invocation.InvocationsFinderTest) (1 ms)</li><li>org.mockito.internal.framework.DefaultMockitoFrameworkTest.adds_creation_listener(org.mockito.internal.framework.DefaultMockitoFrameworkTest) (9 ms)</li><li>org.mockito.internal.debugging.WarningsFinderTest.shouldPrintUnusedStub(org.mockito.internal.debugging.WarningsFinderTest) (1 ms)</li><li>org.mockito.internal.invocation.SerializableMethodTest.shouldBeAbleToRetrieveMethodExceptionTypes(org.mockito.internal.invocation.SerializableMethodTest) (0 ms)</li><li>org.mockito.internal.debugging.VerboseMockInvocationLoggerTest.should_print_if_method_has_not_been_stubbed(org.mockito.internal.debugging.VerboseMockInvocationLoggerTest) (1 ms)</li><li>org.mockito.internal.verification.checkers.MissingInvocationCheckerTest.shouldReportWantedInvocationDiffersFromActual(org.mockito.internal.verification.checkers.MissingInvocationCheckerTest) (1 ms)</li><li>org.mockito.internal.verification.checkers.AtLeastXNumberOfInvocationsCheckerTest.shouldReportTooLittleInvocations(org.mockito.internal.verification.checkers.AtLeastXNumberOfInvocationsCheckerTest) (1 ms)</li><li>org.mockito.internal.verification.checkers.AtLeastXNumberOfInvocationsCheckerTest.shouldReportTooLittleInvocationsInOrder(org.mockito.internal.verification.checkers.AtLeastXNumberOfInvocationsCheckerTest) (0 ms)</li><li>org.mockito.internal.configuration.plugins.PluginFinderTest.multiple_implementations_only_one_useful(org.mockito.internal.configuration.plugins.PluginFinderTest) (16 ms)</li><li>org.mockito.internal.invocation.InvocationMatcherTest.should_not_be_similar_if_is_overloaded_but_used_with_the_same_arg(org.mockito.internal.invocation.InvocationMatcherTest) (1 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest.shouldPassIfChunkMatches(org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest) (0 ms)</li><li>org.mockito.internal.verification.NoMoreInteractionsTest.shouldVerifyInOrderMultipleInvoctionsAndThrow(org.mockito.internal.verification.NoMoreInteractionsTest) (1 ms)</li><li>org.mockito.MockitoTest.shouldRemoveStubbableFromProgressAfterStubbing(org.mockito.MockitoTest) (91 ms)</li><li>org.mockito.internal.matchers.MatchersPrinterTest.shouldGetArgumentsLine(org.mockito.internal.matchers.MatchersPrinterTest) (0 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest.shouldMarkInvocationsAsVerified(org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest) (1 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest.shouldReportWithFirstUndesiredInvocationStackTrace(org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest) (1 ms)</li><li>org.mockito.internal.debugging.LoggingListenerTest.informs_about_various_kinds_of_stubs(org.mockito.internal.debugging.LoggingListenerTest) (1 ms)</li><li>org.mockito.verification.TimeoutTest.should_pass_when_verification_passes(org.mockito.verification.TimeoutTest) (1 ms)</li><li>org.mockito.internal.invocation.InvocationMatcherTest.should_be_similar_if_is_overloaded_but_used_with_different_arg(org.mockito.internal.invocation.InvocationMatcherTest) (0 ms)</li><li>org.mockito.internal.debugging.WarningsFinderTest.shouldPrintUnstubbedInvocation(org.mockito.internal.debugging.WarningsFinderTest) (0 ms)</li><li>org.mockito.internal.verification.DescriptionTest.verification_failure_should_prepend_expected_message(org.mockito.internal.verification.DescriptionTest) (9 ms)</li><li>org.mockito.internal.invocation.InvocationMarkerTest.shouldMarkInvocationAsVerified(org.mockito.internal.invocation.InvocationMarkerTest) (1 ms)</li><li>org.mockito.internal.debugging.VerboseMockInvocationLoggerTest.should_print_stubbed_info_if_available(org.mockito.internal.debugging.VerboseMockInvocationLoggerTest) (1 ms)</li><li>org.mockito.internal.configuration.plugins.PluginFinderTest.single_implementation_disabled(org.mockito.internal.configuration.plugins.PluginFinderTest) (11 ms)</li><li>org.mockito.internal.verification.checkers.AtLeastXNumberOfInvocationsCheckerTest.shouldMarkActualInvocationsAsVerified(org.mockito.internal.verification.checkers.AtLeastXNumberOfInvocationsCheckerTest) (1 ms)</li><li>org.mockito.StaticMockingExperimentTest.verify_static_method(org.mockito.StaticMockingExperimentTest) (1 ms)</li><li>org.mockito.internal.configuration.plugins.PluginLoaderTest.loads_plugin(org.mockito.internal.configuration.plugins.PluginLoaderTest) (1 ms)</li><li>org.mockito.internal.util.reflection.ParameterizedConstructorInstantiatorTest.should_instantiate_type_if_resolver_provide_matching_types(org.mockito.internal.util.reflection.ParameterizedConstructorInstantiatorTest) (22 ms)</li><li>org.mockito.internal.invocation.InvocationsFinderTest.shouldFindFirstSimilarInvocationByName(org.mockito.internal.invocation.InvocationsFinderTest) (2 ms)</li><li>org.mockito.internal.creation.DelegatingMethodTest.equals_should_return_false_when_not_equal(org.mockito.internal.creation.DelegatingMethodTest) (1 ms)</li><li>org.mockito.internal.junit.ArgMismatchFinderTest.stubbing_mismatch(org.mockito.internal.junit.ArgMismatchFinderTest) (1 ms)</li><li>org.mockito.internal.invocation.SerializableMethodTest.shouldBeEqualForTwoInstances(org.mockito.internal.invocation.SerializableMethodTest) (0 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest.shouldReportTooLittleActual(org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest) (0 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest.shouldReportTooLittleActual(org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest) (1 ms)</li><li>org.mockito.InvocationFactoryTest.call_method_that_throws_a_throwable(org.mockito.InvocationFactoryTest) (0 ms)</li><li>org.mockito.internal.util.DefaultMockingDetailsTest.manipulating_invocations_is_safe(org.mockito.internal.util.DefaultMockingDetailsTest) (0 ms)</li><li>org.mockito.internal.handler.InvocationNotifierHandlerTest.should_notify_all_listeners_when_calling_delegate_handler(org.mockito.internal.handler.InvocationNotifierHandlerTest) (1 ms)</li><li>org.mockito.internal.handler.MockHandlerImplTest.should_report_bogus_default_answer(org.mockito.internal.handler.MockHandlerImplTest) (62 ms)</li><li>org.mockito.internal.verification.NoMoreInteractionsTest.noMoreInteractionsInOrderExceptionMessageShouldDescribeMock(org.mockito.internal.verification.NoMoreInteractionsTest) (1 ms)</li><li>org.mockito.StaticMockingExperimentTest.verifying_new(org.mockito.StaticMockingExperimentTest) (1 ms)</li><li>org.mockito.internal.util.reflection.ParameterizedConstructorInstantiatorTest.should_report_failure_if_constructor_throws_exception(org.mockito.internal.util.reflection.ParameterizedConstructorInstantiatorTest) (0 ms)</li><li>org.mockito.internal.handler.MockHandlerFactoryTest.handle_result_must_not_be_null_for_primitives(org.mockito.internal.handler.MockHandlerFactoryTest) (1 ms)</li><li>org.mockito.internal.debugging.LoggingListenerTest.informs_about_unused_stubs(org.mockito.internal.debugging.LoggingListenerTest) (0 ms)</li><li>org.mockito.internal.invocation.InvocationMarkerTest.shouldMarkInvocationsAsVerifiedInOrder(org.mockito.internal.invocation.InvocationMarkerTest) (0 ms)</li><li>org.mockito.internal.invocation.MatcherApplicationStrategyTest.shouldKnowWhenActualArgsSizeIsDifferent(org.mockito.internal.invocation.MatcherApplicationStrategyTest) (1 ms)</li><li>org.mockito.internal.invocation.MatcherApplicationStrategyTest.shouldKnowWhenMatchersSizeIsDifferent(org.mockito.internal.invocation.MatcherApplicationStrategyTest) (1 ms)</li><li>org.mockito.internal.invocation.SerializableMethodTest.shouldNotBeEqualForSameMethodFromTwoDifferentClasses(org.mockito.internal.invocation.SerializableMethodTest) (1 ms)</li><li>org.mockito.internal.debugging.VerboseMockInvocationLoggerTest.should_log_count_of_interactions(org.mockito.internal.debugging.VerboseMockInvocationLoggerTest) (2 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.3.1
+
+</body>
+</html>

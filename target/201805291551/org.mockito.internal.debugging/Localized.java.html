@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>Localized.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@217a1cbf_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_1'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/*</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@217a1cbf_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_2'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Copyright (c) 2007 Mockito contributors</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@217a1cbf_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_3'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * This program is made available under the terms of the MIT License.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@217a1cbf_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_4'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@217a1cbf_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_5'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package org.mockito.internal.debugging;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@217a1cbf_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_6'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@217a1cbf_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_7'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@217a1cbf_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_8'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.mockito.invocation.Location;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@217a1cbf_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_9'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@217a1cbf_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_10'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public class Localized&#60;T&#62; {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@217a1cbf_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_11'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@217a1cbf_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_12'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private final T object;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@217a1cbf_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_13'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private final Location location;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@217a1cbf_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_14'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@217a1cbf_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_15'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    public Localized(T object) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@217a1cbf_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_16'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.object = object;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@217a1cbf_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_17'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        location = new LocationImpl();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@217a1cbf_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_18'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@217a1cbf_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_19'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@217a1cbf_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_20'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public T getObject() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@217a1cbf_21'/>
+21
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_21'>1</a>
+<span>
+
+1. getObject : mutated return of Object value for org/mockito/internal/debugging/Localized::getObject to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return object;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@217a1cbf_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_22'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@217a1cbf_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_23'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@217a1cbf_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_24'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Location getLocation() {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@217a1cbf_25'/>
+25
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_25'>1</a>
+<span>
+
+1. getLocation : mutated return of Object value for org/mockito/internal/debugging/Localized::getLocation to ( if (x != null) null else throw new RuntimeException ) &rarr; SURVIVED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>        return location;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@217a1cbf_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_26'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@217a1cbf_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_27'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@217a1cbf_21'>21</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_21'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getObject<br/><b>Killed by : </b>org.mockito.internal.progress.ThreadSafeMockingProgressTest.shouldShareState(org.mockito.internal.progress.ThreadSafeMockingProgressTest)</span></span> mutated return of Object value for org/mockito/internal/debugging/Localized::getObject to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@217a1cbf_25'>25</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@217a1cbf_25'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getLocation<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/mockito/internal/debugging/Localized::getLocation to ( if (x != null) null else throw new RuntimeException ) &rarr; SURVIVED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+
+<li class='mutator'>MATH_MUTATOR</li>
+
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>org.mockito.internal.InvalidStateDetectionTest.shouldDetectUnfinishedVerification(org.mockito.internal.InvalidStateDetectionTest) (2 ms)</li><li>org.mockito.verification.TimeoutTest.should_try_to_verify_correct_number_of_times(org.mockito.verification.TimeoutTest) (55 ms)</li><li>org.mockito.verification.TimeoutTest.should_pass_when_verification_passes(org.mockito.verification.TimeoutTest) (1 ms)</li><li>org.mockito.internal.debugging.WarningsFinderTest.shouldPrintUnstubbedInvocation(org.mockito.internal.debugging.WarningsFinderTest) (1 ms)</li><li>org.mockito.internal.verification.VerificationWithDescriptionTest.assertion_error_message_should_start_with_the_custom_specified_message(org.mockito.internal.verification.VerificationWithDescriptionTest) (2 ms)</li><li>org.mockito.internal.handler.InvocationNotifierHandlerTest.should_delegate_all_MockHandlerInterface_to_the_parameterized_MockHandler(org.mockito.internal.handler.InvocationNotifierHandlerTest) (48 ms)</li><li>org.mockito.StaticMockingExperimentTest.verify_static_method(org.mockito.StaticMockingExperimentTest) (1 ms)</li><li>org.mockito.StaticMockingExperimentTest.verification_failure_static_method(org.mockito.StaticMockingExperimentTest) (3 ms)</li><li>org.mockito.internal.verification.VerificationOverTimeImplTest.should_return_on_success(org.mockito.internal.verification.VerificationOverTimeImplTest) (0 ms)</li><li>org.mockito.internal.framework.DefaultMockitoFrameworkTest.adds_creation_listener(org.mockito.internal.framework.DefaultMockitoFrameworkTest) (45 ms)</li><li>org.mockito.internal.debugging.WarningsFinderTest.shouldPrintUnusedStub(org.mockito.internal.debugging.WarningsFinderTest) (1 ms)</li><li>org.mockito.internal.progress.MockingProgressImplTest.shouldCheckIfVerificationWasFinished(org.mockito.internal.progress.MockingProgressImplTest) (1 ms)</li><li>org.mockito.internal.progress.ThreadSafeMockingProgressTest.shouldKnowWhenVerificationHasStarted(org.mockito.internal.progress.ThreadSafeMockingProgressTest) (0 ms)</li><li>org.mockito.internal.progress.MockingProgressImplTest.shouldStartVerificationAndPullVerificationMode(org.mockito.internal.progress.MockingProgressImplTest) (0 ms)</li><li>org.mockito.internal.debugging.WarningsFinderTest.shouldPrintStubWasUsedWithDifferentArgs(org.mockito.internal.debugging.WarningsFinderTest) (10 ms)</li><li>org.mockito.verification.TimeoutTest.should_fail_because_verification_fails(org.mockito.verification.TimeoutTest) (20 ms)</li><li>org.mockito.internal.progress.ThreadSafeMockingProgressTest.shouldShareState(org.mockito.internal.progress.ThreadSafeMockingProgressTest) (1 ms)</li><li>org.mockito.internal.handler.InvocationNotifierHandlerTest.should_notify_all_listeners_when_calling_delegate_handler(org.mockito.internal.handler.InvocationNotifierHandlerTest) (1 ms)</li><li>org.mockito.internal.InvalidStateDetectionTest.shouldCorrectStateAfterDetectingUnfinishedVerification(org.mockito.internal.InvalidStateDetectionTest) (2 ms)</li><li>org.mockito.StaticMockingExperimentTest.verifying_new(org.mockito.StaticMockingExperimentTest) (3 ms)</li><li>org.mockito.internal.handler.MockHandlerImplTest.should_remove_verification_mode_even_when_invalid_matchers(org.mockito.internal.handler.MockHandlerImplTest) (24 ms)</li><li>org.mockito.internal.framework.DefaultMockitoFrameworkTest.removes_creation_listener(org.mockito.internal.framework.DefaultMockitoFrameworkTest) (1 ms)</li><li>org.mockito.verification.TimeoutTest.should_pass_even_if_first_verification_fails(org.mockito.verification.TimeoutTest) (5 ms)</li><li>org.mockito.internal.handler.InvocationNotifierHandlerTest.should_notify_all_listeners_when_called_delegate_handler_returns_ex(org.mockito.internal.handler.InvocationNotifierHandlerTest) (1 ms)</li><li>org.mockito.internal.util.reflection.LenientCopyToolTest.shouldContinueEvenIfThereAreProblemsCopyingSingleFieldValue(org.mockito.internal.util.reflection.LenientCopyToolTest) (7 ms)</li><li>org.mockito.internal.handler.InvocationNotifierHandlerTest.should_notify_all_listeners_when_called_delegate_handler_throws_exception_and_rethrow_it(org.mockito.internal.handler.InvocationNotifierHandlerTest) (1 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.3.1
+
+</body>
+</html>

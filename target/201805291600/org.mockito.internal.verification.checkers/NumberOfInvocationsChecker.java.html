@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>NumberOfInvocationsChecker.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_1'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/*</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_2'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Copyright (c) 2007 Mockito contributors</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_3'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * This program is made available under the terms of the MIT License.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_4'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_5'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_6'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package org.mockito.internal.verification.checkers;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_7'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_8'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.Arrays;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_9'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.List;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_10'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.mockito.internal.reporting.Discrepancy;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_11'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.mockito.internal.verification.api.InOrderContext;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_12'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.mockito.invocation.Invocation;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_13'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.mockito.invocation.Location;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_14'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.mockito.invocation.MatchableInvocation;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_15'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_16'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import static org.mockito.internal.exceptions.Reporter.neverWantedButInvoked;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_17'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import static org.mockito.internal.exceptions.Reporter.tooLittleActualInvocations;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_18'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import static org.mockito.internal.exceptions.Reporter.tooLittleActualInvocationsInOrder;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_19'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import static org.mockito.internal.exceptions.Reporter.tooManyActualInvocations;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_20'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import static org.mockito.internal.exceptions.Reporter.tooManyActualInvocationsInOrder;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_21'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import static org.mockito.internal.invocation.InvocationMarker.markVerified;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_22'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import static org.mockito.internal.invocation.InvocationMarker.markVerifiedInOrder;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_23'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import static org.mockito.internal.invocation.InvocationsFinder.findFirstMatchingUnverifiedInvocation;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_24'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import static org.mockito.internal.invocation.InvocationsFinder.findInvocations;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_25'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import static org.mockito.internal.invocation.InvocationsFinder.findMatchingChunk;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_26'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import static org.mockito.internal.invocation.InvocationsFinder.getAllLocations;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_27'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_28'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public class NumberOfInvocationsChecker {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_29'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_30'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>    private NumberOfInvocationsChecker() {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_31'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_32'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_33'/>
+33
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_33'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static void checkNumberOfInvocations(List&#60;Invocation&#62; invocations, MatchableInvocation wanted, int wantedCount) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_34'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        List&#60;Invocation&#62; actualInvocations = findInvocations(invocations, wanted);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_35'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_36'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        int actualCount = actualInvocations.size();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_37'/>
+37
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_37'>2</a>
+<span>
+
+1. checkNumberOfInvocations : changed conditional boundary &rarr; KILLED<br/>
+
+2. checkNumberOfInvocations : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (wantedCount &#62; actualCount) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_38'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            List&#60;Location&#62; allLocations = getAllLocations(actualInvocations);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_39'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            throw tooLittleActualInvocations(new Discrepancy(wantedCount, actualCount), wanted, allLocations);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_40'/>
+40
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_40'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_41'/>
+41
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_41'>3</a>
+<span>
+
+1. checkNumberOfInvocations : changed conditional boundary &rarr; KILLED<br/>
+
+2. checkNumberOfInvocations : negated conditional &rarr; KILLED<br/>
+
+3. checkNumberOfInvocations : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (wantedCount == 0 &#38;&#38; actualCount &#62; 0) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_42'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            throw neverWantedButInvoked(wanted, getAllLocations(actualInvocations));</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_43'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_44'/>
+44
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_44'>2</a>
+<span>
+
+1. checkNumberOfInvocations : changed conditional boundary &rarr; KILLED<br/>
+
+2. checkNumberOfInvocations : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (wantedCount &#60; actualCount) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_45'/>
+45
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_45'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            throw tooManyActualInvocations(wantedCount, actualCount, wanted, getAllLocations(actualInvocations));</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_46'/>
+46
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_46'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_47'/>
+47
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_47'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_48'/>
+48
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_48'>1</a>
+<span>
+
+1. checkNumberOfInvocations : removed call to org/mockito/internal/invocation/InvocationMarker::markVerified &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        markVerified(actualInvocations, wanted);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_49'/>
+49
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_49'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_50'/>
+50
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_50'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_51'/>
+51
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_51'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static void checkNumberOfInvocations(List&#60;Invocation&#62; invocations, MatchableInvocation wanted, int wantedCount, InOrderContext context) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_52'/>
+52
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_52'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        List&#60;Invocation&#62; chunk = findMatchingChunk(invocations, wanted, wantedCount, context);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_53'/>
+53
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_53'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_54'/>
+54
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_54'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        int actualCount = chunk.size();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_55'/>
+55
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_55'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_56'/>
+56
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_56'>2</a>
+<span>
+
+1. checkNumberOfInvocations : changed conditional boundary &rarr; KILLED<br/>
+
+2. checkNumberOfInvocations : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (wantedCount &#62; actualCount) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_57'/>
+57
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_57'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            List&#60;Location&#62; allLocations = getAllLocations(chunk);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_58'/>
+58
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_58'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            throw tooLittleActualInvocationsInOrder(new Discrepancy(wantedCount, actualCount), wanted, allLocations);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_59'/>
+59
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_59'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_60'/>
+60
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_60'>2</a>
+<span>
+
+1. checkNumberOfInvocations : changed conditional boundary &rarr; KILLED<br/>
+
+2. checkNumberOfInvocations : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (wantedCount &#60; actualCount) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_61'/>
+61
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_61'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            throw tooManyActualInvocationsInOrder(wantedCount, actualCount, wanted, getAllLocations(chunk));</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_62'/>
+62
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_62'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_63'/>
+63
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_63'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_64'/>
+64
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_64'>1</a>
+<span>
+
+1. checkNumberOfInvocations : removed call to org/mockito/internal/invocation/InvocationMarker::markVerifiedInOrder &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        markVerifiedInOrder(chunk, wanted, context);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_65'/>
+65
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_65'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_66'/>
+66
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_66'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_67'/>
+67
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_67'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public static void checkNumberOfInvocationsNonGreedy(List&#60;Invocation&#62; invocations, MatchableInvocation wanted, int wantedCount, InOrderContext context) {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_68'/>
+68
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_68'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>        int actualCount = 0;</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_69'/>
+69
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_69'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>        Location lastLocation = null;</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_70'/>
+70
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_70'>2</a>
+<span>
+
+1. checkNumberOfInvocationsNonGreedy : changed conditional boundary &rarr; NO_COVERAGE<br/>
+
+2. checkNumberOfInvocationsNonGreedy : negated conditional &rarr; NO_COVERAGE<br/>
+
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>        while( actualCount &#60; wantedCount ){</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_71'/>
+71
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_71'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>            Invocation next = findFirstMatchingUnverifiedInvocation(invocations, wanted, context );</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_72'/>
+72
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_72'>1</a>
+<span>
+
+1. checkNumberOfInvocationsNonGreedy : negated conditional &rarr; NO_COVERAGE<br/>
+
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>            if( next == null ){</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_73'/>
+73
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_73'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>                throw tooLittleActualInvocationsInOrder(new Discrepancy(wantedCount, actualCount), wanted, Arrays.asList(lastLocation));</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_74'/>
+74
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_74'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_75'/>
+75
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_75'>1</a>
+<span>
+
+1. checkNumberOfInvocationsNonGreedy : removed call to org/mockito/internal/invocation/InvocationMarker::markVerified &rarr; NO_COVERAGE<br/>
+
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>            markVerified( next, wanted );</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_76'/>
+76
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_76'>1</a>
+<span>
+
+1. checkNumberOfInvocationsNonGreedy : removed call to org/mockito/internal/verification/api/InOrderContext::markVerified &rarr; NO_COVERAGE<br/>
+
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>            context.markVerified( next );</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_77'/>
+77
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_77'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>            lastLocation = next.getLocation();</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_78'/>
+78
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_78'>1</a>
+<span>
+
+1. checkNumberOfInvocationsNonGreedy : Changed increment from 1 to -1 &rarr; NO_COVERAGE<br/>
+
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>            actualCount++;</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_79'/>
+79
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_79'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_80'/>
+80
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_80'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@358720a0_81'/>
+81
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_81'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@358720a0_37'>37</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_37'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>checkNumberOfInvocations<br/><b>Killed by : </b>org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest.shouldMarkInvocationsAsVerified(org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>checkNumberOfInvocations<br/><b>Killed by : </b>org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest.shouldMarkInvocationsAsVerified(org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@358720a0_41'>41</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_41'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>checkNumberOfInvocations<br/><b>Killed by : </b>org.mockito.StaticMockingExperimentTest.verify_static_method(org.mockito.StaticMockingExperimentTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>checkNumberOfInvocations<br/><b>Killed by : </b>org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest.shouldMarkInvocationsAsVerified(org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest)</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>3.<span><b>3</b><br/><b>Location : </b>checkNumberOfInvocations<br/><b>Killed by : </b>org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest.shouldReportNeverWantedButInvoked(org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@358720a0_44'>44</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_44'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>checkNumberOfInvocations<br/><b>Killed by : </b>org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest.shouldMarkInvocationsAsVerified(org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>checkNumberOfInvocations<br/><b>Killed by : </b>org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest.shouldMarkInvocationsAsVerified(org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@358720a0_48'>48</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_48'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>checkNumberOfInvocations<br/><b>Killed by : </b>org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest.shouldMarkInvocationsAsVerified(org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest)</span></span> removed call to org/mockito/internal/invocation/InvocationMarker::markVerified &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@358720a0_56'>56</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_56'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>checkNumberOfInvocations<br/><b>Killed by : </b>org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest.shouldPassIfWantedIsZeroAndMatchingChunkIsEmpty(org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>checkNumberOfInvocations<br/><b>Killed by : </b>org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest.shouldPassIfWantedIsZeroAndMatchingChunkIsEmpty(org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@358720a0_60'>60</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_60'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>checkNumberOfInvocations<br/><b>Killed by : </b>org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest.shouldPassIfWantedIsZeroAndMatchingChunkIsEmpty(org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest)</span></span> changed conditional boundary &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>checkNumberOfInvocations<br/><b>Killed by : </b>org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest.shouldPassIfWantedIsZeroAndMatchingChunkIsEmpty(org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@358720a0_64'>64</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_64'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>checkNumberOfInvocations<br/><b>Killed by : </b>org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest.shouldMarkAsVerifiedInOrder(org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest)</span></span> removed call to org/mockito/internal/invocation/InvocationMarker::markVerifiedInOrder &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@358720a0_70'>70</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_70'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>checkNumberOfInvocationsNonGreedy<br/><b>Killed by : </b>none</span></span> changed conditional boundary &rarr; NO_COVERAGE</p> <p class='NO_COVERAGE'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>checkNumberOfInvocationsNonGreedy<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@358720a0_72'>72</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_72'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>checkNumberOfInvocationsNonGreedy<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@358720a0_75'>75</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_75'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>checkNumberOfInvocationsNonGreedy<br/><b>Killed by : </b>none</span></span> removed call to org/mockito/internal/invocation/InvocationMarker::markVerified &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@358720a0_76'>76</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_76'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>checkNumberOfInvocationsNonGreedy<br/><b>Killed by : </b>none</span></span> removed call to org/mockito/internal/verification/api/InOrderContext::markVerified &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@358720a0_78'>78</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@358720a0_78'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>checkNumberOfInvocationsNonGreedy<br/><b>Killed by : </b>none</span></span> Changed increment from 1 to -1 &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+
+<li class='mutator'>MATH_MUTATOR</li>
+
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest.shouldPassIfWantedIsZeroAndMatchingChunkIsEmpty(org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest) (0 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest.shouldMarkInvocationsAsVerified(org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest) (1 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest.shouldReportNeverWantedButInvoked(org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest) (2 ms)</li><li>org.mockito.verification.TimeoutTest.should_try_to_verify_correct_number_of_times(org.mockito.verification.TimeoutTest) (53 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest.shouldReportWithFirstUndesiredInvocationStackTrace(org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest) (1 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest.shouldReportWithAllInvocationsStackTrace(org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest) (2 ms)</li><li>org.mockito.verification.TimeoutTest.should_pass_when_verification_passes(org.mockito.verification.TimeoutTest) (1 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest.shouldReportTooManyActual(org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest) (1 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest.shouldReportAllInvocationsStackTrace(org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest) (2 ms)</li><li>org.mockito.internal.handler.InvocationNotifierHandlerTest.should_delegate_all_MockHandlerInterface_to_the_parameterized_MockHandler(org.mockito.internal.handler.InvocationNotifierHandlerTest) (43 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest.shouldReportTooLittleInvocations(org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest) (1 ms)</li><li>org.mockito.StaticMockingExperimentTest.verify_static_method(org.mockito.StaticMockingExperimentTest) (2 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest.shouldNotReportWithLastInvocationStackTraceIfNoInvocationsFound(org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest) (1 ms)</li><li>org.mockito.internal.verification.VerificationOverTimeImplTest.should_return_on_success(org.mockito.internal.verification.VerificationOverTimeImplTest) (0 ms)</li><li>org.mockito.internal.framework.DefaultMockitoFrameworkTest.adds_creation_listener(org.mockito.internal.framework.DefaultMockitoFrameworkTest) (10 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest.shouldMarkInvocationsAsVerified(org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest) (2 ms)</li><li>org.mockito.verification.TimeoutTest.should_fail_because_verification_fails(org.mockito.verification.TimeoutTest) (20 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest.shouldReportTooLittleActual(org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest) (2 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest.shouldReportTooLittleActual(org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest) (1 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest.shouldMarkAsVerifiedInOrder(org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest) (1 ms)</li><li>org.mockito.internal.handler.InvocationNotifierHandlerTest.should_notify_all_listeners_when_calling_delegate_handler(org.mockito.internal.handler.InvocationNotifierHandlerTest) (1 ms)</li><li>org.mockito.internal.InvalidStateDetectionTest.shouldCorrectStateAfterDetectingUnfinishedVerification(org.mockito.internal.InvalidStateDetectionTest) (2 ms)</li><li>org.mockito.StaticMockingExperimentTest.verifying_new(org.mockito.StaticMockingExperimentTest) (2 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest.shouldNotReportWithLastInvocationStackTraceIfNoInvocationsFound(org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest) (2 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest.shouldPassIfChunkMatches(org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest) (0 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest.shouldReportNeverWantedButInvoked(org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest) (1 ms)</li><li>org.mockito.internal.framework.DefaultMockitoFrameworkTest.removes_creation_listener(org.mockito.internal.framework.DefaultMockitoFrameworkTest) (2 ms)</li><li>org.mockito.verification.TimeoutTest.should_pass_even_if_first_verification_fails(org.mockito.verification.TimeoutTest) (4 ms)</li><li>org.mockito.internal.handler.InvocationNotifierHandlerTest.should_notify_all_listeners_when_called_delegate_handler_returns_ex(org.mockito.internal.handler.InvocationNotifierHandlerTest) (2 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest.shouldReportWithAllInvocationsStackTrace(org.mockito.internal.verification.checkers.NumberOfInvocationsInOrderCheckerTest) (1 ms)</li><li>org.mockito.internal.handler.InvocationNotifierHandlerTest.should_notify_all_listeners_when_called_delegate_handler_throws_exception_and_rethrow_it(org.mockito.internal.handler.InvocationNotifierHandlerTest) (2 ms)</li><li>org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest.shouldReportTooManyActual(org.mockito.internal.verification.checkers.NumberOfInvocationsCheckerTest) (2 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.3.1
+
+</body>
+</html>

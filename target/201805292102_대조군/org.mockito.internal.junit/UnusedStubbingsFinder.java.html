@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>UnusedStubbingsFinder.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_1'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/*</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_2'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Copyright (c) 2016 Mockito contributors</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_3'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * This program is made available under the terms of the MIT License.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_4'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_5'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package org.mockito.internal.junit;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_6'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_7'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.mockito.stubbing.Stubbing;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_8'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.mockito.internal.invocation.finder.AllInvocationsFinder;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_9'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.mockito.internal.util.collections.ListUtil.Filter;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_10'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.mockito.invocation.Invocation;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_11'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_12'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import java.util.*;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_13'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_14'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import static org.mockito.internal.util.collections.ListUtil.filter;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_15'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_16'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_17'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Finds unused stubbings</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_18'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_19'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>public class UnusedStubbingsFinder {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_20'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_21'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_22'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Gets all unused stubbings for given set of mock objects, in order</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_23'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_24'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public UnusedStubbings getUnusedStubbings(Iterable&#60;Object&#62; mocks) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_25'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        Set&#60;Stubbing&#62; stubbings = AllInvocationsFinder.findStubbings(mocks);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_26'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_27'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        List&#60;Stubbing&#62; unused = filter(stubbings, new Filter&#60;Stubbing&#62;() {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_28'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            public boolean isOut(Stubbing s) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_29'/>
+29
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_29'>1</a>
+<span>
+
+1. isOut : replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                return s.wasUsed();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_30'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_31'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        });</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_32'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_33'/>
+33
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_33'>1</a>
+<span>
+
+1. getUnusedStubbings : mutated return of Object value for org/mockito/internal/junit/UnusedStubbingsFinder::getUnusedStubbings to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new UnusedStubbings(unused);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_34'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_35'/>
+35
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_35'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_36'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_37'/>
+37
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_37'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Gets unused stubbings per location. This method is less accurate than {@link #getUnusedStubbings(Iterable)}.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_38'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * It considers that stubbings with the same location (e.g. ClassFile + line number) are the same.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_39'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * This is not completely accurate because a stubbing declared in a setup or constructor</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_40'/>
+40
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_40'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * is created per each test method. Because those are different test methods,</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_41'/>
+41
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_41'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * different mocks are created, different &#39;Invocation&#39; instance is backing the &#39;Stubbing&#39; instance.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_42'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * In certain scenarios (detecting unused stubbings by JUnit runner), we need this exact level of accuracy.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_43'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * Stubbing declared in constructor but realized in % of test methods is considered as &#39;used&#39; stubbing.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_44'/>
+44
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_44'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * There are high level unit tests that demonstrate this scenario.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_45'/>
+45
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_45'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_46'/>
+46
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_46'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public Collection&#60;Invocation&#62; getUnusedStubbingsByLocation(Iterable&#60;Object&#62; mocks) {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_47'/>
+47
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_47'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>        Set&#60;Stubbing&#62; stubbings = AllInvocationsFinder.findStubbings(mocks);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_48'/>
+48
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_48'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_49'/>
+49
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_49'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        //1st pass, collect all the locations of the stubbings that were used</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_50'/>
+50
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_50'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        //note that those are _not_ locations where the stubbings was used</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_51'/>
+51
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_51'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>        Set&#60;String&#62; locationsOfUsedStubbings = new HashSet&#60;String&#62;();</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_52'/>
+52
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_52'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>        for (Stubbing s : stubbings) {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_53'/>
+53
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_53'>1</a>
+<span>
+
+1. getUnusedStubbingsByLocation : negated conditional &rarr; NO_COVERAGE<br/>
+
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>            if (s.wasUsed()) {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_54'/>
+54
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_54'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>                String location = s.getInvocation().getLocation().toString();</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_55'/>
+55
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_55'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>                locationsOfUsedStubbings.add(location);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_56'/>
+56
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_56'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_57'/>
+57
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_57'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_58'/>
+58
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_58'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_59'/>
+59
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_59'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        //2nd pass, collect unused stubbings by location</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_60'/>
+60
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_60'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        //If the location matches we assume the stubbing was used in at least one test method</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_61'/>
+61
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_61'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        //Also, using map to deduplicate reported unused stubbings</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_62'/>
+62
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_62'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        // if unused stubbing appear in the setup method / constructor we don&#39;t want to report it per each test case</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_63'/>
+63
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_63'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>        Map&#60;String, Invocation&#62; out = new LinkedHashMap&#60;String, Invocation&#62;();</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_64'/>
+64
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_64'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>        for (Stubbing s : stubbings) {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_65'/>
+65
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_65'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>            String location = s.getInvocation().getLocation().toString();</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_66'/>
+66
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_66'>1</a>
+<span>
+
+1. getUnusedStubbingsByLocation : negated conditional &rarr; NO_COVERAGE<br/>
+
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>            if (!locationsOfUsedStubbings.contains(location)) {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_67'/>
+67
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_67'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>                out.put(location, s.getInvocation());</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_68'/>
+68
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_68'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_69'/>
+69
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_69'></a>
+<span>
+</span>
+</td>
+<td class='uncovered'><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_70'/>
+70
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_70'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_71'/>
+71
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_71'>1</a>
+<span>
+
+1. getUnusedStubbingsByLocation : mutated return of Object value for org/mockito/internal/junit/UnusedStubbingsFinder::getUnusedStubbingsByLocation to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE<br/>
+
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>        return out.values();</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_72'/>
+72
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_72'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@754a9dfa_73'/>
+73
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_73'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@754a9dfa_29'>29</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_29'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>isOut<br/><b>Killed by : </b>org.mockito.internal.session.DefaultMockitoSessionBuilderTest.uses_logger_and_strictness(org.mockito.internal.session.DefaultMockitoSessionBuilderTest)</span></span> replaced return of integer sized value with (x == 0 ? 1 : 0) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@754a9dfa_33'>33</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_33'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getUnusedStubbings<br/><b>Killed by : </b>org.mockito.internal.session.DefaultMockitoSessionBuilderTest.creates_sessions(org.mockito.internal.session.DefaultMockitoSessionBuilderTest)</span></span> mutated return of Object value for org/mockito/internal/junit/UnusedStubbingsFinder::getUnusedStubbings to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@754a9dfa_53'>53</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_53'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getUnusedStubbingsByLocation<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@754a9dfa_66'>66</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_66'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getUnusedStubbingsByLocation<br/><b>Killed by : </b>none</span></span> negated conditional &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@754a9dfa_71'>71</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@754a9dfa_71'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getUnusedStubbingsByLocation<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/mockito/internal/junit/UnusedStubbingsFinder::getUnusedStubbingsByLocation to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+
+<li class='mutator'>MATH_MUTATOR</li>
+
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>org.mockito.internal.session.DefaultMockitoSessionBuilderTest.creates_sessions(org.mockito.internal.session.DefaultMockitoSessionBuilderTest) (0 ms)</li><li>org.mockito.internal.invocation.TypeSafeMatchingTest.compareToIntVsString(org.mockito.internal.invocation.TypeSafeMatchingTest) (1 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.isEmptyAfterClear(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (1 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.mock_with_failing_hashCode_method_can_be_added(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (1 ms)</li><li>org.mockito.internal.invocation.TypeSafeMatchingTest.matchesWithSubTypeExtendingGenericClass(org.mockito.internal.invocation.TypeSafeMatchingTest) (1 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.can_retain_a_collection(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (1 ms)</li><li>org.mockito.internal.session.DefaultMockitoSessionBuilderTest.creates_sessions_for_multiple_test_class_instances_for_repeated_calls(org.mockito.internal.session.DefaultMockitoSessionBuilderTest) (0 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.can_remove(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (1 ms)</li><li>org.mockito.internal.invocation.TypeSafeMatchingTest.compareToNonCompareable(org.mockito.internal.invocation.TypeSafeMatchingTest) (0 ms)</li><li>org.mockito.internal.session.DefaultMockitoSessionBuilderTest.creates_sessions_for_multiple_test_class_instances_for_varargs_call(org.mockito.internal.session.DefaultMockitoSessionBuilderTest) (1 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.mock_with_failing_equals_method_can_be_used(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (0 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.can_add_a_collection(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (5 ms)</li><li>org.mockito.internal.invocation.TypeSafeMatchingTest.passEveryArgumentTypeIfNoBridgeMethodWasGenerated(org.mockito.internal.invocation.TypeSafeMatchingTest) (1 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.toStringIsNotNullOrEmpty(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (1 ms)</li><li>org.mockito.internal.invocation.TypeSafeMatchingTest.compareToStringVsInt(org.mockito.internal.invocation.TypeSafeMatchingTest) (1 ms)</li><li>org.mockito.internal.configuration.plugins.PluginLoaderTest.loads_plugin(org.mockito.internal.configuration.plugins.PluginLoaderTest) (1 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.can_remove_a_collection(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (0 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.can_add_mock_that_have_failing_hashCode_method(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (1 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.isNotEqualWhenContentIsDifferent(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (0 ms)</li><li>org.mockito.internal.junit.JUnitRuleTest.injects_into_test_case(org.mockito.internal.junit.JUnitRuleTest) (1 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.toArray_just_work(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (1 ms)</li><li>org.mockito.internal.verification.checkers.MissingInvocationInOrderCheckerTest.shouldPassWhenMatchingInteractionFound(org.mockito.internal.verification.checkers.MissingInvocationInOrderCheckerTest) (1 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.hashCodeIsEqualIfContentIsEqual(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (0 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.removeByIterator(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (1 ms)</li><li>org.mockito.internal.invocation.TypeSafeMatchingTest.compareNullArgument(org.mockito.internal.invocation.TypeSafeMatchingTest) (3 ms)</li><li>org.mockito.internal.invocation.TypeSafeMatchingTest.matchesOverloadsMustBeIgnored(org.mockito.internal.invocation.TypeSafeMatchingTest) (1 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.cloneIsNotSupported(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (0 ms)</li><li>org.mockito.internal.configuration.plugins.PluginLoaderTest.loads_alternative_plugin(org.mockito.internal.configuration.plugins.PluginLoaderTest) (1 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.isNotEqualToAnOtherTypeOfSetWithSameContent(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (0 ms)</li><li>org.mockito.internal.invocation.TypeSafeMatchingTest.compareToNull2(org.mockito.internal.invocation.TypeSafeMatchingTest) (1 ms)</li><li>org.mockito.internal.invocation.TypeSafeMatchingTest.compareToNull(org.mockito.internal.invocation.TypeSafeMatchingTest) (0 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.can_iterate(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (0 ms)</li><li>org.mockito.internal.configuration.plugins.PluginLoaderTest.loads_default_plugin(org.mockito.internal.configuration.plugins.PluginLoaderTest) (1 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.isEqualToItself(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (1 ms)</li><li>org.mockito.internal.session.DefaultMockitoSessionBuilderTest.uses_logger_and_strictness(org.mockito.internal.session.DefaultMockitoSessionBuilderTest) (1 ms)</li><li>org.mockito.internal.junit.JUnitRuleTest.detects_invalid_mockito_usage_on_success(org.mockito.internal.junit.JUnitRuleTest) (3 ms)</li><li>org.mockito.internal.invocation.TypeSafeMatchingTest.dontMatchesWithSubTypeExtendingGenericClass(org.mockito.internal.invocation.TypeSafeMatchingTest) (1 ms)</li><li>org.mockito.internal.configuration.plugins.PluginLoaderTest.fails_to_load_plugin(org.mockito.internal.configuration.plugins.PluginLoaderTest) (23 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.3.1
+
+</body>
+</html>

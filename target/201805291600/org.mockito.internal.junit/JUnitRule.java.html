@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>JUnitRule.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_1'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/*</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_2'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Copyright (c) 2018 Mockito contributors</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_3'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * This program is made available under the terms of the MIT License.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_4'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_5'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package org.mockito.internal.junit;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_6'/>
+6
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_6'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_7'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.junit.runners.model.FrameworkMethod;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_8'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.junit.runners.model.Statement;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_9'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.mockito.Mockito;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_10'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.mockito.MockitoSession;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_11'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.mockito.internal.session.MockitoSessionLoggerAdapter;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_12'/>
+12
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_12'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.mockito.internal.util.MockitoLogger;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_13'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.mockito.quality.Strictness;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_14'/>
+14
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_14'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>import org.mockito.junit.MockitoRule;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_15'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_16'/>
+16
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_16'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>/**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_17'/>
+17
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_17'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> * Internal implementation.</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_18'/>
+18
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_18'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''> */</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_19'/>
+19
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_19'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>public class JUnitRule implements MockitoRule {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_20'/>
+20
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_20'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_21'/>
+21
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_21'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private final MockitoLogger logger;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_22'/>
+22
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_22'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private Strictness strictness;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_23'/>
+23
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_23'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    private MockitoSession session;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_24'/>
+24
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_24'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_25'/>
+25
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_25'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    /**</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_26'/>
+26
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_26'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     * @param strictness how strict mocking / stubbing is concerned</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_27'/>
+27
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_27'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>     */</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_28'/>
+28
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_28'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    public JUnitRule(MockitoLogger logger, Strictness strictness) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_29'/>
+29
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_29'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.logger = logger;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_30'/>
+30
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_30'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.strictness = strictness;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_31'/>
+31
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_31'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_32'/>
+32
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_32'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_33'/>
+33
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_33'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;@Override</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_34'/>
+34
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_34'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>&#9;public Statement apply(final Statement base, final FrameworkMethod method, final Object target) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_35'/>
+35
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_35'>1</a>
+<span>
+
+1. apply : mutated return of Object value for org/mockito/internal/junit/JUnitRule::apply to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return new Statement() {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_36'/>
+36
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_36'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            public void evaluate() throws Throwable {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_37'/>
+37
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_37'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                session = Mockito.mockitoSession()</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_38'/>
+38
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_38'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                    .name(target.getClass().getSimpleName() + &#34;.&#34; + method.getName())</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_39'/>
+39
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_39'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                    .strictness(strictness)</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_40'/>
+40
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_40'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                    .logger(new MockitoSessionLoggerAdapter(logger))</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_41'/>
+41
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_41'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                    .initMocks(target)</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_42'/>
+42
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_42'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                    .startMocking();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_43'/>
+43
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_43'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                Throwable testFailure = evaluateSafely(base);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_44'/>
+44
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_44'>1</a>
+<span>
+
+1. evaluate : removed call to org/mockito/MockitoSession::finishMocking &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                session.finishMocking(testFailure);</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_45'/>
+45
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_45'>1</a>
+<span>
+
+1. evaluate : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                if (testFailure != null) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_46'/>
+46
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_46'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                    throw testFailure;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_47'/>
+47
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_47'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_48'/>
+48
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_48'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_49'/>
+49
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_49'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_50'/>
+50
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_50'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            private Throwable evaluateSafely(Statement base) {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_51'/>
+51
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_51'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                try {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_52'/>
+52
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_52'>1</a>
+<span>
+
+1. evaluateSafely : removed call to org/junit/runners/model/Statement::evaluate &rarr; SURVIVED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='survived'>                    base.evaluate();</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_53'/>
+53
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_53'>1</a>
+<span>
+
+1. evaluateSafely : mutated return of Object value for org/mockito/internal/junit/JUnitRule$1::evaluateSafely to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                    return null;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_54'/>
+54
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_54'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>                } catch (Throwable throwable) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_55'/>
+55
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_55'>1</a>
+<span>
+
+1. evaluateSafely : mutated return of Object value for org/mockito/internal/junit/JUnitRule$1::evaluateSafely to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>                    return throwable;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_56'/>
+56
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_56'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>                }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_57'/>
+57
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_57'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>            }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_58'/>
+58
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_58'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        };</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_59'/>
+59
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_59'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_60'/>
+60
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_60'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_61'/>
+61
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_61'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public MockitoRule silent() {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_62'/>
+62
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_62'>1</a>
+<span>
+
+1. silent : mutated return of Object value for org/mockito/internal/junit/JUnitRule::silent to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE<br/>
+
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>        return strictness(Strictness.LENIENT);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_63'/>
+63
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_63'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_64'/>
+64
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_64'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_65'/>
+65
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_65'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    public MockitoRule strictness(Strictness strictness) {</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_66'/>
+66
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_66'></a>
+<span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.strictness = strictness;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_67'/>
+67
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_67'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        // session is null when this method is called during initialization of</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_68'/>
+68
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_68'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        // the @Rule field of the test class</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_69'/>
+69
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_69'>1</a>
+<span>
+
+1. strictness : negated conditional &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if (session != null) {</span></pre></td></tr>
+
+
+<tr>
+<td class='uncovered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_70'/>
+70
+</td>
+<td class='survived'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_70'>1</a>
+<span>
+
+1. strictness : removed call to org/mockito/MockitoSession::setStrictness &rarr; NO_COVERAGE<br/>
+
+</span>
+</td>
+<td class='uncovered'><pre><span  class='survived'>            session.setStrictness(strictness);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_71'/>
+71
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_71'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_72'/>
+72
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_72'>1</a>
+<span>
+
+1. strictness : mutated return of Object value for org/mockito/internal/junit/JUnitRule::strictness to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED<br/>
+
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        return this;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_73'/>
+73
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_73'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@73ec168e_74'/>
+74
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_74'></a>
+<span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@73ec168e_35'>35</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_35'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>apply<br/><b>Killed by : </b>org.mockito.internal.junit.JUnitRuleTest.does_not_check_invalid_mockito_usage_on_failure(org.mockito.internal.junit.JUnitRuleTest)</span></span> mutated return of Object value for org/mockito/internal/junit/JUnitRule::apply to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@73ec168e_44'>44</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_44'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>evaluate<br/><b>Killed by : </b>org.mockito.internal.junit.JUnitRuleTest.detects_invalid_mockito_usage_on_success(org.mockito.internal.junit.JUnitRuleTest)</span></span> removed call to org/mockito/MockitoSession::finishMocking &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@73ec168e_45'>45</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_45'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>evaluate<br/><b>Killed by : </b>org.mockito.internal.junit.JUnitRuleTest.does_not_check_invalid_mockito_usage_on_failure(org.mockito.internal.junit.JUnitRuleTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@73ec168e_52'>52</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_52'/> 
+
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>evaluateSafely<br/><b>Killed by : </b>none</span></span> removed call to org/junit/runners/model/Statement::evaluate &rarr; SURVIVED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@73ec168e_53'>53</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_53'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>evaluateSafely<br/><b>Killed by : </b>org.mockito.internal.junit.JUnitRuleTest.injects_into_test_case(org.mockito.internal.junit.JUnitRuleTest)</span></span> mutated return of Object value for org/mockito/internal/junit/JUnitRule$1::evaluateSafely to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@73ec168e_55'>55</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_55'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>evaluateSafely<br/><b>Killed by : </b>org.mockito.internal.junit.JUnitRuleTest.does_not_check_invalid_mockito_usage_on_failure(org.mockito.internal.junit.JUnitRuleTest)</span></span> mutated return of Object value for org/mockito/internal/junit/JUnitRule$1::evaluateSafely to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@73ec168e_62'>62</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_62'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>silent<br/><b>Killed by : </b>none</span></span> mutated return of Object value for org/mockito/internal/junit/JUnitRule::silent to ( if (x != null) null else throw new RuntimeException ) &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@73ec168e_69'>69</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_69'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>strictness<br/><b>Killed by : </b>org.mockito.internal.configuration.plugins.PluginLoaderTest.loads_alternative_plugin(org.mockito.internal.configuration.plugins.PluginLoaderTest)</span></span> negated conditional &rarr; KILLED</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@73ec168e_70'>70</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_70'/> 
+
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>strictness<br/><b>Killed by : </b>none</span></span> removed call to org/mockito/MockitoSession::setStrictness &rarr; NO_COVERAGE</p> 
+</td>
+</tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@73ec168e_72'>72</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@73ec168e_72'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>strictness<br/><b>Killed by : </b>org.mockito.internal.configuration.plugins.PluginLoaderTest.loads_alternative_plugin(org.mockito.internal.configuration.plugins.PluginLoaderTest)</span></span> mutated return of Object value for org/mockito/internal/junit/JUnitRule::strictness to ( if (x != null) null else throw new RuntimeException ) &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+
+<li class='mutator'>INCREMENTS_MUTATOR</li>
+
+<li class='mutator'>VOID_METHOD_CALL_MUTATOR</li>
+
+<li class='mutator'>RETURN_VALS_MUTATOR</li>
+
+<li class='mutator'>MATH_MUTATOR</li>
+
+<li class='mutator'>NEGATE_CONDITIONALS_MUTATOR</li>
+
+<li class='mutator'>INVERT_NEGS_MUTATOR</li>
+
+<li class='mutator'>CONDITIONALS_BOUNDARY_MUTATOR</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>org.mockito.internal.junit.JUnitRuleTest.does_not_check_invalid_mockito_usage_on_failure(org.mockito.internal.junit.JUnitRuleTest) (1 ms)</li><li>org.mockito.internal.invocation.TypeSafeMatchingTest.compareToIntVsString(org.mockito.internal.invocation.TypeSafeMatchingTest) (0 ms)</li><li>org.mockito.internal.junit.JUnitRuleTest.rethrows_exception(org.mockito.internal.junit.JUnitRuleTest) (1 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.isEmptyAfterClear(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (0 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.mock_with_failing_hashCode_method_can_be_added(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (0 ms)</li><li>org.mockito.internal.invocation.TypeSafeMatchingTest.matchesWithSubTypeExtendingGenericClass(org.mockito.internal.invocation.TypeSafeMatchingTest) (1 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.can_retain_a_collection(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (1 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.can_remove(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (1 ms)</li><li>org.mockito.internal.invocation.TypeSafeMatchingTest.compareToNonCompareable(org.mockito.internal.invocation.TypeSafeMatchingTest) (1 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.mock_with_failing_equals_method_can_be_used(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (0 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.can_add_a_collection(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (6 ms)</li><li>org.mockito.internal.invocation.TypeSafeMatchingTest.passEveryArgumentTypeIfNoBridgeMethodWasGenerated(org.mockito.internal.invocation.TypeSafeMatchingTest) (0 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.toStringIsNotNullOrEmpty(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (1 ms)</li><li>org.mockito.internal.invocation.TypeSafeMatchingTest.compareToStringVsInt(org.mockito.internal.invocation.TypeSafeMatchingTest) (0 ms)</li><li>org.mockito.internal.configuration.plugins.PluginLoaderTest.loads_plugin(org.mockito.internal.configuration.plugins.PluginLoaderTest) (1 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.can_remove_a_collection(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (1 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.can_add_mock_that_have_failing_hashCode_method(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (1 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.isNotEqualWhenContentIsDifferent(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (0 ms)</li><li>org.mockito.internal.junit.JUnitRuleTest.injects_into_test_case(org.mockito.internal.junit.JUnitRuleTest) (0 ms)</li><li>org.mockito.internal.verification.checkers.MissingInvocationInOrderCheckerTest.shouldReportArgumentsAreDifferent(org.mockito.internal.verification.checkers.MissingInvocationInOrderCheckerTest) (2 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.toArray_just_work(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (1 ms)</li><li>org.mockito.internal.verification.checkers.MissingInvocationInOrderCheckerTest.shouldPassWhenMatchingInteractionFound(org.mockito.internal.verification.checkers.MissingInvocationInOrderCheckerTest) (1 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.hashCodeIsEqualIfContentIsEqual(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (0 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.removeByIterator(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (1 ms)</li><li>org.mockito.internal.invocation.TypeSafeMatchingTest.compareNullArgument(org.mockito.internal.invocation.TypeSafeMatchingTest) (0 ms)</li><li>org.mockito.internal.invocation.TypeSafeMatchingTest.matchesOverloadsMustBeIgnored(org.mockito.internal.invocation.TypeSafeMatchingTest) (1 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.cloneIsNotSupported(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (1 ms)</li><li>org.mockito.internal.configuration.plugins.PluginLoaderTest.loads_alternative_plugin(org.mockito.internal.configuration.plugins.PluginLoaderTest) (0 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.isNotEqualToAnOtherTypeOfSetWithSameContent(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (1 ms)</li><li>org.mockito.internal.verification.checkers.MissingInvocationInOrderCheckerTest.shouldReportWantedDiffersFromActual(org.mockito.internal.verification.checkers.MissingInvocationInOrderCheckerTest) (1 ms)</li><li>org.mockito.internal.invocation.TypeSafeMatchingTest.compareToNull2(org.mockito.internal.invocation.TypeSafeMatchingTest) (0 ms)</li><li>org.mockito.internal.invocation.TypeSafeMatchingTest.compareToNull(org.mockito.internal.invocation.TypeSafeMatchingTest) (1 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.can_iterate(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (1 ms)</li><li>org.mockito.internal.configuration.plugins.PluginLoaderTest.loads_default_plugin(org.mockito.internal.configuration.plugins.PluginLoaderTest) (0 ms)</li><li>org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest.isEqualToItself(org.mockito.internal.util.collections.HashCodeAndEqualsSafeSetTest) (1 ms)</li><li>org.mockito.internal.junit.JUnitRuleTest.detects_invalid_mockito_usage_on_success(org.mockito.internal.junit.JUnitRuleTest) (3 ms)</li><li>org.mockito.internal.verification.checkers.MissingInvocationInOrderCheckerTest.shouldReportWantedButNotInvoked(org.mockito.internal.verification.checkers.MissingInvocationInOrderCheckerTest) (1 ms)</li><li>org.mockito.internal.invocation.TypeSafeMatchingTest.dontMatchesWithSubTypeExtendingGenericClass(org.mockito.internal.invocation.TypeSafeMatchingTest) (0 ms)</li><li>org.mockito.internal.configuration.plugins.PluginLoaderTest.fails_to_load_plugin(org.mockito.internal.configuration.plugins.PluginLoaderTest) (22 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='http://pitest.org'>PIT</a> 1.3.1
+
+</body>
+</html>
